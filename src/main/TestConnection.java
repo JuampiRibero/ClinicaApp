@@ -11,7 +11,6 @@ public class TestConnection {
         
         /**
          * Se usa un bloque try-with-resources para asegurar que la conexión se cierre automáticamente al salir del bloque.
-         * No es necesario llamar explícitamente a conn.close().
          */
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn != null) {

@@ -1,6 +1,6 @@
 # Trabajo Práctico Integrador - Programación II
 
-## Sistema de Gestión de Historias Clínicas
+## Sistema de Gestión de Pacientes e Historias Clínicas
 
 ### Integrantes
 
@@ -15,7 +15,7 @@
 
 ### Descripción del Proyecto
 
-En el presente trabajo práctico integrador se documenta el desarrollo de una Aplicación Java que implementa los principios de la Programación Orientada a Objetos y patrones de diseño para la gestión de datos persistentes. El proyecto consiste en desarrollar un sistema de gestión de historias clínicas de pacientes que permita realizar operaciones CRUD, implementando una arquitectura robusta y profesional. Las dos entidades, Paciente e HistoriaClinica, están relacionadas mediante una asociación unidireccional uno a uno (1→1).
+En el presente trabajo práctico integrador se documenta el desarrollo de una Aplicación Java que implementa los principios de la Programación Orientada a Objetos y patrones de diseño para la gestión de datos persistentes. El proyecto consiste en desarrollar un sistema de gestión de pacientes e historias clínicas que permita realizar operaciones CRUD, implementando una arquitectura robusta y profesional. Las dos entidades, Paciente e HistoriaClinica, están relacionadas mediante una asociación unidireccional uno a uno (1→1).
 
 ### Objetivos Académicos
 
