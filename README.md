@@ -209,8 +209,9 @@ ClinicaApp/
 **Service/**
 
 - `GenericService<T>`: Interface genérica para servicios.
-- `PacienteServiceImpl`: Validaciones de paciente y coordinación con historias clínicas.
-- `HistoriaClinicaImpl`: Validaciones de historia clínica.
+- `PacienteServiceImpl`: Validaciones de paciente.
+- `HistoriaClinicaServiceImpl`: Validaciones de historia clínica.
+- `PacienteHistoriaServiceImpl`: Coordinación entre pacientes e historias clínicas..
 
 **Main/**
 
