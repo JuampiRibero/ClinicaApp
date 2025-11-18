@@ -18,44 +18,38 @@ public class PacienteHistoriaService {
         this.historiaDao = historiaDao;
     }
 
-    // Insertar Paciente + HistoriaClinica en una única transacción
     public long crearPacienteConHistoria(Paciente paciente, HistoriaClinica historia) throws Exception {
 
         try (Connection conn = DatabaseConnection.getConnection()) {
+            conn.setAutoCommit(false);
             try {
 
-                conn.setAutoCommit(false);
-
-                // Validaciones obligatorias
                 if (paciente.getDni() == null || paciente.getDni().isBlank()) {
                     throw new Exception("El DNI es obligatorio.");
                 }
 
-                // Regla 1→1: verificar que ese paciente NO tenga historia
-                HistoriaClinica existente = historiaDao.leerPorPacienteId(paciente.getId());
-                if (existente != null) {
-                    throw new Exception("El paciente ya tiene una historia clínica asignada.");
+                if (pacienteDao.buscarPorDni(paciente.getDni()) != null) {
+                    throw new Exception("ERROR: Ya existe un paciente con el DNI " + paciente.getDni());
                 }
 
-                // Insertar paciente
                 long pacienteId = pacienteDao.crear(paciente, conn);
 
-                // Asociar la historia al paciente
-                paciente.setHistoriaClinica(historia); 
+                historia.setId(pacienteId); 
 
-                // Insertar historia clínica
                 historiaDao.crear(historia, conn);
+                
+                paciente.setHistoriaClinica(historia);
+                paciente.setId(pacienteId);
 
                 conn.commit();
                 return pacienteId;
 
             } catch (Exception e) {
-                conn.rollback(); // rollback SIEMPRE ante error
-                throw e;
+                conn.rollback();
+                throw new Exception("Error en la transacción: " + e.getMessage()); 
             } finally {
                 conn.setAutoCommit(true);
             }
         }
     }
-
 }

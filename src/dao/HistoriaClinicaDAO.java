@@ -19,7 +19,7 @@ public class HistoriaClinicaDAO implements GenericDAO<HistoriaClinica> {
 
         try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, hc.getNroHistoria());
-            ps.setString(2, hc.getGrupoSanguineo().name());
+            ps.setString(2, hc.getGrupoSanguineo().toString());
             ps.setString(3, hc.getAntecedentes());
             ps.setString(4, hc.getMedicacionActual());
             ps.setString(5, hc.getObservaciones());
@@ -76,8 +76,8 @@ public class HistoriaClinicaDAO implements GenericDAO<HistoriaClinica> {
 
     private HistoriaClinica mapResultSetToHistoriaClinica(ResultSet rs) throws SQLException {
         String grupoSanguineoString = rs.getString("grupo_sanguineo");
-        // 🎯 Usar valueOf() para convertir el String guardado (ej: A_POS) de vuelta al Enum
-        GrupoSanguineo grupo = GrupoSanguineo.valueOf(grupoSanguineoString);
+        
+        GrupoSanguineo grupo = GrupoSanguineo.fromString(grupoSanguineoString);
 
         return new HistoriaClinica(
                 rs.getLong("id"),

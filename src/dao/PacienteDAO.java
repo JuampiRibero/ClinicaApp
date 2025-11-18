@@ -18,7 +18,7 @@ public class PacienteDAO implements GenericDAO<Paciente> {
 
     @Override
     public long crear(Paciente paciente, Connection conn) throws Exception {
-        String sql = "INSERT INTO paciente (nombre, apellido, dni, fechaNacimiento, eliminado) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO paciente (nombre, apellido, dni, fecha_nacimiento, eliminado) VALUES (?,?,?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getApellido());
