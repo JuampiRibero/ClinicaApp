@@ -222,3 +222,4 @@ ClinicaApp/
 - `TestConexion.java`: Utilidad para verificar conexión a la base de datos.
 
 ## Link al video
+- https://youtu.be/cXPqpRnI2IM
